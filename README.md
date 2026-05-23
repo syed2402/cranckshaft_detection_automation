@@ -1,16 +1,24 @@
-# Crankshaft Profile Decision Intelligence System (Pilot V1)
+# Crankshaft Detection Automation
 
-Local web-based engineering decision support system for crankshaft crowning/profile evaluation.
+A web-based engineering decision support system for crankshaft crowning/profile evaluation.
+
+## Features
+
+- Upload and analyze crankshaft profile files (TXT/CSV)
+- Automatic feature extraction and decision analysis
+- Trend visualization and monitoring
+- Operator override capability
+- Confidence scoring and explainability
 
 ## Backend Setup
 
 ```bash
 cd backend
-pip install fastapi uvicorn numpy scipy python-multipart
+pip install -r requirements.txt
 python main.py
 ```
 
-Backend runs on `http://localhost:8765` by default. Set `PORT=8000` if port 8000 is available.
+Backend runs on `http://localhost:8765` by default.
 
 ## Frontend Setup
 
@@ -22,9 +30,14 @@ npm run dev
 
 Frontend runs on `http://localhost:5173`.
 
-## Workflow
+## Deployment
 
-Upload TXT/CSV coordinate file -> analyze profile -> view reconstructed graph -> inspect features -> review decision/confidence/explainability -> view trends -> manage operator overrides and database records.
+This project is configured for Railway deployment:
+
+1. Push to GitHub
+2. Connect repository to Railway
+3. Set root directory to `backend`
+4. Deploy!
 
 ## Input Format
 
@@ -38,3 +51,7 @@ X,Y
 ```
 
 Comma or tab separated files are supported. X values must be monotonically increasing and at least 50 coordinate points are required.
+
+## Workflow
+
+Upload TXT/CSV coordinate file -> analyze profile -> view reconstructed graph -> inspect features -> review decision/confidence/explainability -> view trends -> manage operator overrides and database records.
