@@ -3,7 +3,14 @@ import os
 import sqlite3
 from datetime import datetime
 
-DB_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "crankshaft.db"))
+# Use environment variable for database path, fallback to local path
+DB_PATH = os.environ.get(
+    "DATABASE_PATH",
+    os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "crankshaft.db"))
+)
+
+# Ensure directory exists
+os.makedirs(os.path.dirname(DB_PATH), exist_ok=True)
 
 
 def _connect():

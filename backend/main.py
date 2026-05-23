@@ -12,7 +12,10 @@ from parser import parse_profile_file
 from preprocessor import preprocess_profile
 from trend_engine import analyze_trend
 
-UPLOAD_DIR = os.path.join(os.path.dirname(__file__), "uploads")
+UPLOAD_DIR = os.environ.get(
+    "UPLOAD_DIR",
+    os.path.join(os.path.dirname(__file__), "uploads")
+)
 os.makedirs(UPLOAD_DIR, exist_ok=True)
 
 app = FastAPI(title="Crankshaft Profile DIS API")
