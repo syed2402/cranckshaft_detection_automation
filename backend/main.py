@@ -27,6 +27,9 @@ ALLOWED_ORIGINS = [
     ).split(",")
 ]
 
+# Debug: Print allowed origins
+print(f"ALLOWED_ORIGINS: {ALLOWED_ORIGINS}")
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=ALLOWED_ORIGINS,
